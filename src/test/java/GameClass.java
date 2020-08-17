@@ -21,4 +21,9 @@ public class GameClass {
     public void makePlayer1() {
         Player player1 = ticTac.getPlayer1();
     }
+
+    @Test
+    public void makePlayer2() {
+        Player player2 = ticTac.getPlayer2();
+    }
 }
