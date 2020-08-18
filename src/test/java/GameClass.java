@@ -3,27 +3,41 @@ import org.junit.Test;
 import tic_tac_toe.Game;
 import tic_tac_toe.Player;
 
+import static org.junit.Assert.*;
+
 public class GameClass {
 
-    private Game ticTac;
+    private Game ticTacToe;
 
     @Before
     public void setup() {
-        ticTac = new Game();
+        ticTacToe = new Game("Anna", "Marcie");
     }
 
     @Test
     public void moves() {
-        int[] moves = ticTac.getMoves();
+        String[] moves = ticTacToe.getMoves();
+        assertNotNull(moves);
     }
 
     @Test
-    public void makePlayer1() {
-        Player player1 = ticTac.getPlayer1();
+    public void makePlayerNames() {
+        Player player1 = new Player("Anna");
+        assertEquals("Anna", player1.getName());
+        Player player2 = new Player("Marcie");
+        assertEquals("Marcie", player2.getName());
     }
 
     @Test
-    public void makePlayer2() {
-        Player player2 = ticTac.getPlayer2();
+    public void makeGameWithPlayers() {
+        assertEquals("Anna", ticTacToe.getPlayer1Name());
+        assertEquals("Marcie", ticTacToe.getPlayer2Name());
+    }
+
+    @Test
+    public void makeMoves() {
+        Player player = new Player("Dan");
+        ticTacToe.makeMove(player, 1);
+        assertEquals("Dan", ticTacToe.getMoves()[1]);
     }
 }
